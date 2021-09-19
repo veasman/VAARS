@@ -136,7 +136,7 @@ putgitrepo() {
 
 # Make needed dirs
 makedirs() { \
-    sudo -u "$name" mkdir -p "/home/$name/.local{home/share/src}"
+    sudo -u "$name" mkdir -p "/home/$name/.local/{home/share/src}"
     sudo -u "$name" mkdir -p "/home/$name/.local/home/{code,documents,downloads,git,pictures}"
     sudo -u "$name" mkdir -p "/home/$name/.local/home/pictures/wallpapers"
 }
