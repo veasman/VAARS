@@ -160,6 +160,11 @@ installsumneko() { \
     sudo -u "$name" ./3rd/luamake/luamake rebuild >/dev/null 2>&1
 }
 
+finalize() { \
+	dialog --infobox "Preparing welcome message..." 4 50
+	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, log out and log back in as your new user, then run the command \"startx\" to start the graphical environment (it will start automatically in tty1).\\n\\n.t veasman" 12 80
+}
+
 ### SCRIPT ###
 pacman --noconfirm --needed -Sy dialog || error "Are you sure you're running this as the root user, are on an Arch-based distribution and have an internet connection?"
 
@@ -221,7 +226,6 @@ makedirs
 installnvim
 installsumneko
 
-
 # dbus UUID must be generated for Artix runit
 dbus-uuidgen > /var/lib/dbus/machine-id
 
@@ -232,3 +236,7 @@ pkill -15 -x 'pulseaudio'; sudo -u "$name" pulseaudio --start
 # serveral important commands, `shutdown`, `reboot`, updating, etc. without a password.
 newperms "%wheel ALL=(ALL) ALL #LARBS
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/systemctl restart NetworkManager,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/paru,/usr/bin/pacman -Syyuw --noconfirm"
+
+# Final msg, install is complete
+finalize
+clear
