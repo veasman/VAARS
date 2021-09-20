@@ -1,8 +1,13 @@
 # VAARS
 
-## Instructions
-1. Make sure you have an internet connection, and run as root
-2. Run ./install.sh, and go through the install
+## Installation
+
+```bash
+git clone https://github.com/veasman/VAARS.git
+cd VAARS
+sudo ./install.sh
+```
+- Make sure you are connected to the internet
 
 ## FAQ
 
@@ -11,3 +16,6 @@ This is my personal script to make setting up arch much faster
 
 ### What does VAARS stand for?
 veasman's arch auto ricing script
+
+## LICENSE
+[MIT](https://choosealicense.com/licenses/gpl-3.0/#)
